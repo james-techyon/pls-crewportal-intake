@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Application - Prestige Labor Solutions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Freelancer Application</h1>
+            <p>Prestige Labor Solutions</p>
+        </header>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="message success-message" style="display: none;">
+            <div class="success-icon">✓</div>
+            <h2>Application Submitted Successfully!</h2>
+            <p>Thank you for submitting your application to Prestige Labor Solutions.</p>
+            <p>We have received your information and will review it shortly. If your qualifications match our current needs, a member of our team will contact you.</p>
+            <button class="elementor-button elementor-size-sm" onclick="window.top.location.href='https://prestigelaborsolutions.com/crew-portal/'">
+                <span class="elementor-button-content-wrapper">
+                    <span class="elementor-button-text">Return to Crew Portal</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="message error-message" style="display: none;">
+            <h2>Submission Failed</h2>
+            <p id="errorText">Your submission failed because of a server error. Your submission failed because of an error.</p>
+            <button class="elementor-button elementor-size-sm" onclick="location.reload()">Try Again</button>
+        </div>
+
+        <form class="elementor-form" id="freelancerForm" method="post" name="New Form">
+            <input type="hidden" name="post_id" value="3769">
+            <input type="hidden" name="form_id" value="4102454">
+            <input type="hidden" name="referer_title" value="Freelancer Application - Prestige Labor Solutions">
+            <input type="hidden" name="queried_id" value="3769">
+            
+            <div class="elementor-form-fields-wrapper elementor-labels-above">
+                <!-- Personal Information -->
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-name elementor-col-50 elementor-field-required">
+                    <label for="form-field-name" class="elementor-field-label">First name</label>
+                    <input size="1" type="text" name="form_fields[name]" id="form-field-name" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="First name" required="required">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_6e1a849 elementor-col-50 elementor-field-required">
+                    <label for="form-field-field_6e1a849" class="elementor-field-label">Last name</label>
+                    <input size="1" type="text" name="form_fields[field_6e1a849]" id="form-field-field_6e1a849" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Last name" required="required">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_5277720 elementor-col-100 elementor-field-required">
+                    <label for="form-field-field_5277720" class="elementor-field-label">Street Address</label>
+                    <input size="1" type="text" name="form_fields[field_5277720]" id="form-field-field_5277720" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Street Address" required="required">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_02c39d0 elementor-col-100">
+                    <label for="form-field-field_02c39d0" class="elementor-field-label">Street Address Line 2</label>
+                    <input size="1" type="text" name="form_fields[field_02c39d0]" id="form-field-field_02c39d0" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Street Address Line 2">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_ca2a1e3 elementor-col-33">
+                    <label for="form-field-field_ca2a1e3" class="elementor-field-label">City</label>
+                    <input size="1" type="text" name="form_fields[field_ca2a1e3]" id="form-field-field_ca2a1e3" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="City">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_6011bd5 elementor-col-33">
+                    <label for="form-field-field_6011bd5" class="elementor-field-label">State / Province</label>
+                    <input size="1" type="text" name="form_fields[field_6011bd5]" id="form-field-field_6011bd5" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="State / Province">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_21417d1 elementor-col-33">
+                    <label for="form-field-field_21417d1" class="elementor-field-label">Postal / Zip Code</label>
+                    <input size="1" type="text" name="form_fields[field_21417d1]" id="form-field-field_21417d1" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Postal / Zip Code">
+                </div>
+                <div class="elementor-field-type-tel elementor-field-group elementor-column elementor-field-group-field_ae34a7d elementor-col-100">
+                    <label for="form-field-field_ae34a7d" class="elementor-field-label">Phone Number</label>
+                    <input size="1" type="tel" name="form_fields[field_ae34a7d]" id="form-field-field_ae34a7d" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Phone Number" pattern="[0-9()#&+*-=.]+" title="Only numbers and phone characters (#, -, *, etc) are accepted.">
+                </div>
+                <div class="elementor-field-type-email elementor-field-group elementor-column elementor-field-group-field_57a293b elementor-col-100">
+                    <label for="form-field-field_57a293b" class="elementor-field-label">Email</label>
+                    <input size="1" type="email" name="form_fields[field_57a293b]" id="form-field-field_57a293b" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Email">
+                </div>
+
+                <!-- Part 1 - Audio Positions -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_478aff7 elementor-col-100">
+                    <hr>
+                    <h2>Part 1 - Audio Positions</h2>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_199cb01 elementor-col-100">
+                    <label for="form-field-field_199cb01" class="elementor-field-label">Audio Positions:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="A1 - Lead Audio Engineer" id="form-field-field_199cb01-0" name="form_fields[field_199cb01][]"> <label for="form-field-field_199cb01-0">A1 - Lead Audio Engineer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="A2 - Audio Assist" id="form-field-field_199cb01-1" name="form_fields[field_199cb01][]"> <label for="form-field-field_199cb01-1">A2 - Audio Assist</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="RF Coordinator" id="form-field-field_199cb01-2" name="form_fields[field_199cb01][]"> <label for="form-field-field_199cb01-2">RF Coordinator</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_a586cdf elementor-col-100">
+                    <label for="form-field-field_a586cdf" class="elementor-field-label">Please Select All Gear That You Operate:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="Midas Consoles" id="form-field-field_a586cdf-0" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-0">Midas Consoles</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Other Digital Consoles" id="form-field-field_a586cdf-1" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-1">Other Digital Consoles</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Wireless Microphones" id="form-field-field_a586cdf-2" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-2">Wireless Microphones</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="RF Explorer" id="form-field-field_a586cdf-3" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-3">RF Explorer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Wired Clear-Com" id="form-field-field_a586cdf-4" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-4">Wired Clear-Com</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Yamaha Consoles" id="form-field-field_a586cdf-5" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-5">Yamaha Consoles</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Analog Consoles" id="form-field-field_a586cdf-6" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-6">Analog Consoles</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Live Audio Recording" id="form-field-field_a586cdf-7" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-7">Live Audio Recording</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Wireless Workbench" id="form-field-field_a586cdf-8" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-8">Wireless Workbench</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Line Array Systems" id="form-field-field_a586cdf-9" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-9">Line Array Systems</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Smaart" id="form-field-field_a586cdf-10" name="form_fields[field_a586cdf][]"> <label for="form-field-field_a586cdf-10">Smaart</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-field_2364333 elementor-col-20">
+                    <label for="form-field-field_2364333" class="elementor-field-label">Years:</label>
+                    <input type="number" name="form_fields[field_2364333]" id="form-field-field_2364333" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Years:" min="" max="">
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_d384eaa elementor-col-100">
+                    <label for="form-field-field_d384eaa" class="elementor-field-label">Show Experience:</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate General Sessions" id="form-field-field_d384eaa-0" name="form_fields[field_d384eaa][]"> <label for="form-field-field_d384eaa-0">Corporate General Sessions</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate Breakout Rooms" id="form-field-field_d384eaa-1" name="form_fields[field_d384eaa][]"> <label for="form-field-field_d384eaa-1">Corporate Breakout Rooms</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Festivals" id="form-field-field_d384eaa-2" name="form_fields[field_d384eaa][]"> <label for="form-field-field_d384eaa-2">Festivals</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Concerts" id="form-field-field_d384eaa-3" name="form_fields[field_d384eaa][]"> <label for="form-field-field_d384eaa-3">Concerts</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_500e0f4 elementor-col-100">
+                    <label for="form-field-field_500e0f4" class="elementor-field-label">Specify Your Audio Strengths:</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_500e0f4]" id="form-field-field_500e0f4" rows="4" placeholder="Specify Your Audio Strengths:"></textarea>
+                </div>
+
+                <!-- Part 2 - Video Positions -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_2a1bc60 elementor-col-100">
+                    <hr>
+                    <h2>Part 2 - Video Positions</h2>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_94c5c80 elementor-col-100">
+                    <label for="form-field-field_94c5c80" class="elementor-field-label">Video Positions:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="V1 - Lead Video Engineer" id="form-field-field_94c5c80-0" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-0">V1 - Lead Video Engineer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="V2 - Video Assist" id="form-field-field_94c5c80-1" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-1">V2 - Video Assist</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Graphics OP" id="form-field-field_94c5c80-2" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-2">Graphics OP</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Playback OP" id="form-field-field_94c5c80-3" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-3">Playback OP</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Camera Shading" id="form-field-field_94c5c80-4" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-4">Camera Shading</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Web Streaming" id="form-field-field_94c5c80-5" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-5">Web Streaming</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Record OP" id="form-field-field_94c5c80-6" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-6">Record OP</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Media Servers" id="form-field-field_94c5c80-7" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-7">Media Servers</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Projection (Blends & Converge)" id="form-field-field_94c5c80-8" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-8">Projection (Blends & Converge)</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Projection (Basic)" id="form-field-field_94c5c80-9" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-9">Projection (Basic)</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="LED Engineer" id="form-field-field_94c5c80-10" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-10">LED Engineer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="LED Assist" id="form-field-field_94c5c80-11" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-11">LED Assist</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Speaker Ready" id="form-field-field_94c5c80-12" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-12">Speaker Ready</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="IT/Computer Networking" id="form-field-field_94c5c80-13" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-13">IT/Computer Networking</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Camera OP" id="form-field-field_94c5c80-14" name="form_fields[field_94c5c80][]"> <label for="form-field-field_94c5c80-14">Camera OP</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_ce5acae elementor-col-100">
+                    <label for="form-field-field_ce5acae" class="elementor-field-label">Please Select All Gear That You Operate:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="E2" id="form-field-field_ce5acae-0" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-0">E2</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="S3" id="form-field-field_ce5acae-1" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-1">S3</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Spyder" id="form-field-field_ce5acae-2" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-2">Spyder</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Ascender" id="form-field-field_ce5acae-3" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-3">Ascender</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="PDS902" id="form-field-field_ce5acae-4" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-4">PDS902</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Panasonic 410" id="form-field-field_ce5acae-5" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-5">Panasonic 410</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Roland" id="form-field-field_ce5acae-6" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-6">Roland</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="BlackMagic" id="form-field-field_ce5acae-7" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-7">BlackMagic</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="AnalogWay" id="form-field-field_ce5acae-8" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-8">AnalogWay</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Millumin" id="form-field-field_ce5acae-9" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-9">Millumin</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Resolume" id="form-field-field_ce5acae-10" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-10">Resolume</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="D3" id="form-field-field_ce5acae-11" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-11">D3</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="MITT" id="form-field-field_ce5acae-12" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-12">MITT</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="PlaybackPro" id="form-field-field_ce5acae-13" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-13">PlaybackPro</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Aja KiPro" id="form-field-field_ce5acae-14" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-14">Aja KiPro</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Camera Operator - Long Lens" id="form-field-field_ce5acae-15" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-15">Camera Operator - Long Lens</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Camera Operator - Jib" id="form-field-field_ce5acae-16" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-16">Camera Operator - Jib</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Camera CCU" id="form-field-field_ce5acae-17" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-17">Camera CCU</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="20K+ Projectors" id="form-field-field_ce5acae-18" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-18">20K+ Projectors</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="NovaStar Processors" id="form-field-field_ce5acae-19" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-19">NovaStar Processors</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Teleprompter Controllers" id="form-field-field_ce5acae-20" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-20">Teleprompter Controllers</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Tricaster/Wirecast" id="form-field-field_ce5acae-21" name="form_fields[field_ce5acae][]"> <label for="form-field-field_ce5acae-21">Tricaster/Wirecast</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-field_f120dd5 elementor-col-20">
+                    <label for="form-field-field_f120dd5" class="elementor-field-label">Years:</label>
+                    <input type="number" name="form_fields[field_f120dd5]" id="form-field-field_f120dd5" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Years:" min="" max="">
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_a2fd373 elementor-col-100">
+                    <label for="form-field-field_a2fd373" class="elementor-field-label">Show Experience:</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate General Sessions" id="form-field-field_a2fd373-0" name="form_fields[field_a2fd373][]"> <label for="form-field-field_a2fd373-0">Corporate General Sessions</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate Breakout Rooms" id="form-field-field_a2fd373-1" name="form_fields[field_a2fd373][]"> <label for="form-field-field_a2fd373-1">Corporate Breakout Rooms</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Festivals" id="form-field-field_a2fd373-2" name="form_fields[field_a2fd373][]"> <label for="form-field-field_a2fd373-2">Festivals</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Concerts" id="form-field-field_a2fd373-3" name="form_fields[field_a2fd373][]"> <label for="form-field-field_a2fd373-3">Concerts</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_508b820 elementor-col-100">
+                    <label for="form-field-field_508b820" class="elementor-field-label">Specify Your Video Strengths:</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_508b820]" id="form-field-field_508b820" rows="4" placeholder="Specify Your Video Strengths:"></textarea>
+                </div>
+
+                <!-- Part 3 - Lighting Positions -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_d7f6064 elementor-col-100">
+                    <hr>
+                    <h2>Part 3 - Lighting Positions</h2>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_2c48fd5 elementor-col-100">
+                    <label for="form-field-field_2c48fd5" class="elementor-field-label">Lighting Positions:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="LD - Lighting Designer" id="form-field-field_2c48fd5-0" name="form_fields[field_2c48fd5][]"> <label for="form-field-field_2c48fd5-0">LD - Lighting Designer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="L2 - Lighting Assist" id="form-field-field_2c48fd5-1" name="form_fields[field_2c48fd5][]"> <label for="form-field-field_2c48fd5-1">L2 - Lighting Assist</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="ME - Master Electrician" id="form-field-field_2c48fd5-2" name="form_fields[field_2c48fd5][]"> <label for="form-field-field_2c48fd5-2">ME - Master Electrician</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Spotlight Operator" id="form-field-field_2c48fd5-3" name="form_fields[field_2c48fd5][]"> <label for="form-field-field_2c48fd5-3">Spotlight Operator</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_098d5be elementor-col-100">
+                    <label for="form-field-field_098d5be" class="elementor-field-label">Please Select All Gear That You Operate:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="GrandMA" id="form-field-field_098d5be-0" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-0">GrandMA</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Hog" id="form-field-field_098d5be-1" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-1">Hog</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="ETC" id="form-field-field_098d5be-2" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-2">ETC</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="AvoLites" id="form-field-field_098d5be-3" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-3">AvoLites</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Leprechaun" id="form-field-field_098d5be-4" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-4">Leprechaun</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Stage/CL" id="form-field-field_098d5be-5" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-5">Stage/CL</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Distro's" id="form-field-field_098d5be-6" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-6">Distro's</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Dimmer Beach" id="form-field-field_098d5be-7" name="form_fields[field_098d5be][]"> <label for="form-field-field_098d5be-7">Dimmer Beach</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-field_3a8dac3 elementor-col-20">
+                    <label for="form-field-field_3a8dac3" class="elementor-field-label">Years:</label>
+                    <input type="number" name="form_fields[field_3a8dac3]" id="form-field-field_3a8dac3" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Years:" min="" max="">
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_fe3d8b9 elementor-col-100">
+                    <label for="form-field-field_fe3d8b9" class="elementor-field-label">Show Experience:</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate General Sessions" id="form-field-field_fe3d8b9-0" name="form_fields[field_fe3d8b9][]"> <label for="form-field-field_fe3d8b9-0">Corporate General Sessions</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate Breakout Rooms" id="form-field-field_fe3d8b9-1" name="form_fields[field_fe3d8b9][]"> <label for="form-field-field_fe3d8b9-1">Corporate Breakout Rooms</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Festivals" id="form-field-field_fe3d8b9-2" name="form_fields[field_fe3d8b9][]"> <label for="form-field-field_fe3d8b9-2">Festivals</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Concerts" id="form-field-field_fe3d8b9-3" name="form_fields[field_fe3d8b9][]"> <label for="form-field-field_fe3d8b9-3">Concerts</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_2565b9c elementor-col-100">
+                    <label for="form-field-field_2565b9c" class="elementor-field-label">Specify Your Lighting Strengths:</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_2565b9c]" id="form-field-field_2565b9c" rows="4" placeholder="Specify Your Lighting Strengths:"></textarea>
+                </div>
+
+                <!-- Part 4 - Management Positions -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_ca9f8e2 elementor-col-100">
+                    <hr>
+                    <h2>Part 4 - Management Positions</h2>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_0184d7d elementor-col-100">
+                    <label for="form-field-field_0184d7d" class="elementor-field-label">Management Positions:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="Event Producer" id="form-field-field_0184d7d-0" name="form_fields[field_0184d7d][]"> <label for="form-field-field_0184d7d-0">Event Producer</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Production Manager" id="form-field-field_0184d7d-1" name="form_fields[field_0184d7d][]"> <label for="form-field-field_0184d7d-1">Production Manager</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Technical Director" id="form-field-field_0184d7d-2" name="form_fields[field_0184d7d][]"> <label for="form-field-field_0184d7d-2">Technical Director</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Show Caller" id="form-field-field_0184d7d-3" name="form_fields[field_0184d7d][]"> <label for="form-field-field_0184d7d-3">Show Caller</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Crew Lead" id="form-field-field_0184d7d-4" name="form_fields[field_0184d7d][]"> <label for="form-field-field_0184d7d-4">Crew Lead</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_c8197c0 elementor-col-100">
+                    <label for="form-field-field_c8197c0" class="elementor-field-label">Skillsets:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="Create Cue-to-Cue's" id="form-field-field_c8197c0-0" name="form_fields[field_c8197c0][]"> <label for="form-field-field_c8197c0-0">Create Cue-to-Cue's</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Vectorworks" id="form-field-field_c8197c0-1" name="form_fields[field_c8197c0][]"> <label for="form-field-field_c8197c0-1">Vectorworks</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-field_9a163ea elementor-col-20">
+                    <label for="form-field-field_9a163ea" class="elementor-field-label">Years:</label>
+                    <input type="number" name="form_fields[field_9a163ea]" id="form-field-field_9a163ea" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="ex. 23" min="" max="">
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_86c97da elementor-col-100">
+                    <label for="form-field-field_86c97da" class="elementor-field-label">Show Experience:</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate General Sessions" id="form-field-field_86c97da-0" name="form_fields[field_86c97da][]"> <label for="form-field-field_86c97da-0">Corporate General Sessions</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate Breakout Rooms" id="form-field-field_86c97da-1" name="form_fields[field_86c97da][]"> <label for="form-field-field_86c97da-1">Corporate Breakout Rooms</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Festivals" id="form-field-field_86c97da-2" name="form_fields[field_86c97da][]"> <label for="form-field-field_86c97da-2">Festivals</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Concerts" id="form-field-field_86c97da-3" name="form_fields[field_86c97da][]"> <label for="form-field-field_86c97da-3">Concerts</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_a3b6557 elementor-col-100">
+                    <label for="form-field-field_a3b6557" class="elementor-field-label">Elaborate On Your Management Experience:</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_a3b6557]" id="form-field-field_a3b6557" rows="4" placeholder="Elaborate On Your Management Experience"></textarea>
+                </div>
+
+                <!-- Part 5 - Assist Positions -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_5ca96ef elementor-col-100">
+                    <hr>
+                    <h2>Part 5 - Assist Positions</h2>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_e2e8603 elementor-col-100">
+                    <label for="form-field-field_e2e8603" class="elementor-field-label">Assist Positions:</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option"><input type="checkbox" value="Lead Carpenter" id="form-field-field_e2e8603-0" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-0">Lead Carpenter</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Carpenter" id="form-field-field_e2e8603-1" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-1">Carpenter</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Stagehand" id="form-field-field_e2e8603-2" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-2">Stagehand</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Rigger" id="form-field-field_e2e8603-3" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-3">Rigger</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Breakout Float" id="form-field-field_e2e8603-4" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-4">Breakout Float</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Breakout OP" id="form-field-field_e2e8603-5" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-5">Breakout OP</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Breakout Tech" id="form-field-field_e2e8603-6" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-6">Breakout Tech</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="General AV" id="form-field-field_e2e8603-7" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-7">General AV</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Scenic" id="form-field-field_e2e8603-8" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-8">Scenic</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Truck Loader" id="form-field-field_e2e8603-9" name="form_fields[field_e2e8603][]"> <label for="form-field-field_e2e8603-9">Truck Loader</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_4cb15ea elementor-col-100">
+                    <label for="form-field-field_4cb15ea" class="elementor-field-label">What equipment are you most comfortable with?</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_4cb15ea]" id="form-field-field_4cb15ea" rows="4" placeholder="What equipment are you most comfortable with?"></textarea>
+                </div>
+                <div class="elementor-field-type-number elementor-field-group elementor-column elementor-field-group-field_8ee1d31 elementor-col-20">
+                    <label for="form-field-field_8ee1d31" class="elementor-field-label">Years:</label>
+                    <input type="number" name="form_fields[field_8ee1d31]" id="form-field-field_8ee1d31" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="ex. 23" min="" max="">
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_69b7f75 elementor-col-100">
+                    <label for="form-field-field_69b7f75" class="elementor-field-label">Show Experience:</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate General Sessions" id="form-field-field_69b7f75-0" name="form_fields[field_69b7f75][]"> <label for="form-field-field_69b7f75-0">Corporate General Sessions</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Corporate Breakout Rooms" id="form-field-field_69b7f75-1" name="form_fields[field_69b7f75][]"> <label for="form-field-field_69b7f75-1">Corporate Breakout Rooms</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Festivals" id="form-field-field_69b7f75-2" name="form_fields[field_69b7f75][]"> <label for="form-field-field_69b7f75-2">Festivals</label></span>
+                        <span class="elementor-field-option"><input type="checkbox" value="Concerts" id="form-field-field_69b7f75-3" name="form_fields[field_69b7f75][]"> <label for="form-field-field_69b7f75-3">Concerts</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_297d1d9 elementor-col-100">
+                    <label for="form-field-field_297d1d9" class="elementor-field-label">Elaborate on your main strengths:</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_297d1d9]" id="form-field-field_297d1d9" rows="4" placeholder="Elaborate on your main strengths:"></textarea>
+                </div>
+
+                <!-- Part 6 - Final Section -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_981251b elementor-col-100">
+                    <hr>
+                    <h2>Part 6 - Final Section</h2>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_c1a020e elementor-col-100">
+                    <label for="form-field-field_c1a020e" class="elementor-field-label">What companies have you worked with in the past?</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_c1a020e]" id="form-field-field_c1a020e" rows="4" placeholder="What companies have you worked with in the past?"></textarea>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_025c58b elementor-col-100">
+                    <label for="form-field-field_025c58b" class="elementor-field-label">Are there any additional skills that you have aside from those stated above?</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_025c58b]" id="form-field-field_025c58b" rows="4" placeholder="Are there any additional skills that you have aside from those stated above?"></textarea>
+                </div>
+                <div class="elementor-field-type-textarea elementor-field-group elementor-column elementor-field-group-field_2e7849d elementor-col-100">
+                    <label for="form-field-field_2e7849d" class="elementor-field-label">Additional Comments</label>
+                    <textarea class="elementor-field-textual elementor-field elementor-size-sm" name="form_fields[field_2e7849d]" id="form-field-field_2e7849d" rows="4" placeholder="Additional Comments"></textarea>
+                </div>
+                <div class="elementor-field-type-radio elementor-field-group elementor-column elementor-field-group-field_1ca2066 elementor-col-100 elementor-field-required">
+                    <label for="form-field-field_1ca2066" class="elementor-field-label">Have you worked with Prestige Labor in the past?</label>
+                    <div class="elementor-field-subgroup">
+                        <span class="elementor-field-option"><input type="radio" value="Yes" id="form-field-field_1ca2066-0" name="form_fields[field_1ca2066]" required="required"> <label for="form-field-field_1ca2066-0">Yes</label></span>
+                        <span class="elementor-field-option"><input type="radio" value="No" id="form-field-field_1ca2066-1" name="form_fields[field_1ca2066]" required="required"> <label for="form-field-field_1ca2066-1">No</label></span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_dde637d elementor-col-100">
+                    <label for="form-field-field_dde637d" class="elementor-field-label">Referred by:</label>
+                    <input size="1" type="text" name="form_fields[field_dde637d]" id="form-field-field_dde637d" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Referred by:">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_a3996a1 elementor-col-100">
+                    <label for="form-field-field_a3996a1" class="elementor-field-label">What is your LinkedIn Profile?</label>
+                    <input size="1" type="text" name="form_fields[field_a3996a1]" id="form-field-field_a3996a1" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="What is your LinkedIn Profile?">
+                </div>
+                <div class="elementor-field-type-upload elementor-field-group elementor-column elementor-field-group-field_04f88ef elementor-col-100">
+                    <label for="form-field-field_04f88ef" class="elementor-field-label">Upload Picture</label>
+                    <input type="file" name="form_fields[field_04f88ef]" id="form-field-field_04f88ef" class="elementor-field elementor-size-sm elementor-upload-field" accept="image/*">
+                </div>
+
+                <!-- Required Documents Section -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_documents_header elementor-col-100">
+                    <hr>
+                    <h2>Required Documents</h2>
+                    <p>Please download and review these documents. You'll need them to complete your application:</p>
+                    <div class="document-links">
+                        <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" class="document-link">
+                            📄 Download W-9 Tax Form (IRS Official)
+                        </a>
+                        <a href="https://prestigelaborsolutions.com/documents/PLS_Independent_Contractor_Agreement_rev_06.18.25.pdf" target="_blank" class="document-link">
+                            📄 Download Independent Contractor Agreement
+                        </a>
+                        <a href="https://prestigelaborsolutions.com/documents/PLS-blank-invoice-template.pdf" target="_blank" class="document-link">
+                            📄 Download Invoice Template (For Future Use)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tax Information Section -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_tax_header elementor-col-100">
+                    <hr>
+                    <h2>Tax Information <span class="optional-notice">(Required for work eligibility)</span></h2>
+                    <p class="section-notice">⚠️ You can submit without this information, but you won't be eligible for work assignments until completed.</p>
+                </div>
+                <div class="elementor-field-type-radio elementor-field-group elementor-column elementor-field-group-field_tax_method elementor-col-100">
+                    <label class="elementor-field-label">Tax Information Method</label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option">
+                            <input type="radio" value="Upload W-9" id="form-field-field_tax_method-0" name="form_fields[field_tax_method]" onchange="toggleTaxFields(this.value)">
+                            <label for="form-field-field_tax_method-0">Upload W-9 Form</label>
+                        </span>
+                        <span class="elementor-field-option">
+                            <input type="radio" value="Enter Information" id="form-field-field_tax_method-1" name="form_fields[field_tax_method]" onchange="toggleTaxFields(this.value)">
+                            <label for="form-field-field_tax_method-1">Enter Tax Information</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-upload elementor-field-group elementor-column elementor-field-group-field_w9_upload elementor-col-100" id="w9UploadField" style="display: none;">
+                    <label for="form-field-field_w9_upload" class="elementor-field-label">Upload Completed W-9 Form</label>
+                    <input type="file" name="form_fields[field_w9_upload]" id="form-field-field_w9_upload" class="elementor-field elementor-size-sm elementor-upload-field" accept=".pdf,.jpg,.jpeg,.png">
+                    <small class="form-text">Please upload your completed W-9 form (download available above)</small>
+                </div>
+                <div id="taxInfoFields" style="display: none;">
+                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_legal_business_name elementor-col-100">
+                        <label for="form-field-field_legal_business_name" class="elementor-field-label">Legal Business Name</label>
+                        <input size="1" type="text" name="form_fields[field_legal_business_name]" id="form-field-field_legal_business_name" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Legal name for tax purposes">
+                    </div>
+                    <div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-field_business_type elementor-col-50">
+                        <label for="form-field-field_business_type" class="elementor-field-label">Business Type</label>
+                        <select name="form_fields[field_business_type]" id="form-field-field_business_type" class="elementor-field elementor-size-sm elementor-field-textual">
+                            <option value="">Select Business Type</option>
+                            <option value="Individual/Sole Proprietor">Individual/Sole Proprietor</option>
+                            <option value="Single-Member LLC">Single-Member LLC</option>
+                            <option value="C Corporation">C Corporation</option>
+                            <option value="S Corporation">S Corporation</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Trust/Estate">Trust/Estate</option>
+                            <option value="LLC - C Corp">LLC - C Corp</option>
+                            <option value="LLC - S Corp">LLC - S Corp</option>
+                            <option value="LLC - Partnership">LLC - Partnership</option>
+                        </select>
+                    </div>
+                    <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_tax_id elementor-col-50">
+                        <label for="form-field-field_tax_id" class="elementor-field-label">Tax ID (EIN or SSN)</label>
+                        <input size="1" type="text" name="form_fields[field_tax_id]" id="form-field-field_tax_id" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="XX-XXXXXXX or XXX-XX-XXXX">
+                    </div>
+                </div>
+
+                <!-- Banking Details Section -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_banking_header elementor-col-100">
+                    <hr>
+                    <h2>Direct Deposit Information <span class="optional-notice">(Required for payment)</span></h2>
+                    <p class="section-notice">⚠️ You can submit without this information, but payments cannot be processed until completed.</p>
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_bank_name elementor-col-100">
+                    <label for="form-field-field_bank_name" class="elementor-field-label">Bank Name</label>
+                    <input size="1" type="text" name="form_fields[field_bank_name]" id="form-field-field_bank_name" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Name of your bank">
+                </div>
+                <div class="elementor-field-type-select elementor-field-group elementor-column elementor-field-group-field_account_type elementor-col-50">
+                    <label for="form-field-field_account_type" class="elementor-field-label">Account Type</label>
+                    <select name="form_fields[field_account_type]" id="form-field-field_account_type" class="elementor-field elementor-size-sm elementor-field-textual">
+                        <option value="">Select Account Type</option>
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                    </select>
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_routing_number elementor-col-50">
+                    <label for="form-field-field_routing_number" class="elementor-field-label">Routing Number</label>
+                    <input size="1" type="text" name="form_fields[field_routing_number]" id="form-field-field_routing_number" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="9-digit routing number" maxlength="9" pattern="[0-9]{9}">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_account_number elementor-col-50">
+                    <label for="form-field-field_account_number" class="elementor-field-label">Account Number</label>
+                    <input size="1" type="password" name="form_fields[field_account_number]" id="form-field-field_account_number" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Account number">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_account_number_confirm elementor-col-50">
+                    <label for="form-field-field_account_number_confirm" class="elementor-field-label">Confirm Account Number</label>
+                    <input size="1" type="password" name="form_fields[field_account_number_confirm]" id="form-field-field_account_number_confirm" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Re-enter account number">
+                </div>
+
+                <!-- Terms & Conditions Section -->
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_terms_header elementor-col-100">
+                    <hr>
+                    <h2>Independent Contractor Agreement <span class="optional-notice">(Required for work eligibility)</span></h2>
+                    <p class="section-notice">⚠️ You must accept the terms to be eligible for work assignments. Please review the full agreement (download available above).</p>
+                </div>
+                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_terms_content elementor-col-100">
+                    <div class="terms-container">
+                        <h3>INDEPENDENT CONTRACTOR AGREEMENT</h3>
+                        <p>This Independent Contractor Agreement ("Agreement") is entered into between Prestige Labor Solutions ("Company") and the undersigned contractor ("Contractor").</p>
+                        
+                        <h4>1. INDEPENDENT CONTRACTOR STATUS</h4>
+                        <p>Contractor acknowledges and agrees that Contractor is an independent contractor and not an employee of Company. Contractor shall have no authority to bind Company or to hold out to any third party that Contractor is an employee or agent of Company.</p>
+                        
+                        <h4>2. SERVICES</h4>
+                        <p>Contractor agrees to provide audio, video, lighting, management, or technical support services as requested by Company on a project-by-project basis.</p>
+                        
+                        <h4>3. COMPENSATION</h4>
+                        <p>Contractor will be compensated at agreed-upon rates for each project. Payment will be made via direct deposit within 30 days of invoice submission and approval.</p>
+                        
+                        <h4>4. TAXES</h4>
+                        <p>Contractor is responsible for all federal, state, and local taxes. Company will not withhold any taxes from Contractor's compensation. Contractor agrees to provide a completed W-9 form.</p>
+                        
+                        <h4>5. INSURANCE</h4>
+                        <p>Contractor is responsible for maintaining appropriate insurance coverage, including general liability and professional liability insurance.</p>
+                        
+                        <h4>6. CONFIDENTIALITY</h4>
+                        <p>Contractor agrees to maintain the confidentiality of all proprietary information received from Company or its clients.</p>
+                        
+                        <h4>7. TERMINATION</h4>
+                        <p>Either party may terminate this Agreement at any time with written notice.</p>
+                        
+                        <h4>8. GOVERNING LAW</h4>
+                        <p>This Agreement shall be governed by the laws of the state where services are performed.</p>
+                    </div>
+                </div>
+                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_terms_accepted elementor-col-100">
+                    <label for="form-field-field_terms_accepted" class="elementor-field-label"></label>
+                    <div class="elementor-field-subgroup elementor-subgroup-inline">
+                        <span class="elementor-field-option">
+                            <input type="checkbox" value="Yes" id="form-field-field_terms_accepted-0" name="form_fields[field_terms_accepted][]">
+                            <label for="form-field-field_terms_accepted-0">I have read, understood, and agree to the terms and conditions of the Independent Contractor Agreement</label>
+                        </span>
+                    </div>
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_electronic_signature elementor-col-50">
+                    <label for="form-field-field_electronic_signature" class="elementor-field-label">Electronic Signature (Type your full name)</label>
+                    <input size="1" type="text" name="form_fields[field_electronic_signature]" id="form-field-field_electronic_signature" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Type your full legal name">
+                </div>
+                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_signature_date elementor-col-50">
+                    <label for="form-field-field_signature_date" class="elementor-field-label">Date</label>
+                    <input size="1" type="text" name="form_fields[field_signature_date]" id="form-field-field_signature_date" class="elementor-field elementor-size-sm elementor-field-textual" readonly>
+                </div>
+
+                <!-- Eligibility Warning -->
+                <div id="eligibilityWarning" class="elementor-field-type-html elementor-field-group elementor-column elementor-col-100" style="display: none;">
+                    <div class="eligibility-warning">
+                        <h3>⚠️ Incomplete Application Warning</h3>
+                        <p>Your application is missing the following required information:</p>
+                        <ul id="missingRequirementsList"></ul>
+                        <p><strong>You can still submit your application, but you will be marked as INELIGIBLE for work assignments until these requirements are completed.</strong></p>
+                    </div>
+                </div>
+
+                <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
+                    <button class="elementor-button elementor-size-sm" type="submit" id="submitBtn">
+                        <span class="elementor-button-content-wrapper">
+                            <span class="elementor-button-text">Submit</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

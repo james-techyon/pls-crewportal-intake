@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Google Sheets Connection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .error {
+            background: #ffcccc;
+            color: #cc0000;
+        }
+        .success {
+            background: #ccffcc;
+            color: #008800;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Google Sheets Connection Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Configuration</h2>
+        <p><strong>Google Apps Script URL:</strong></p>
+        <input type="text" id="scriptUrl" value="https://script.google.com/macros/s/AKfycbxtpezLrqs8aIVN0hj62zduP3OPO5NX7kLIBUmkrfE4n_l8Jo68rua9mHEUdByqNEi3/exec" />
+        <p><strong>Google Sheet ID (in Code.gs):</strong> 1Z1NTy7di7Xx4M5j1Ji4dKdjMymwcwOOnYbMxUWa4SMI</p>
+        <p>If you have a new Google Sheet ID, update it in Code.gs and redeploy the Apps Script.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 1: Simple GET Request</h2>
+        <button onclick="testGet()">Test GET Request</button>
+        <div id="getResult" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Simple POST Request</h2>
+        <button onclick="testSimplePost()">Test Simple POST</button>
+        <div id="simplePostResult" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Full Form Data POST</h2>
+        <button onclick="testFullPost()">Test Full Form POST</button>
+        <div id="fullPostResult" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Alternative Submission Method</h2>
+        <button onclick="testAlternativeSubmit()">Test Alternative Submit</button>
+        <div id="altResult" class="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = document.getElementById('scriptUrl').value;
+
+        function showResult(elementId, content, isError = false) {
+            const element = document.getElementById(elementId);
+            element.textContent = content;
+            element.className = 'result ' + (isError ? 'error' : 'success');
+            element.style.display = 'block';
+        }
+
+        async function testGet() {
+            const url = document.getElementById('scriptUrl').value;
+            try {
+                showResult('getResult', 'Sending GET request...');
+                const response = await fetch(url);
+                const text = await response.text();
+                showResult('getResult', `Response: ${text}`);
+            } catch (error) {
+                showResult('getResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function testSimplePost() {
+            const url = document.getElementById('scriptUrl').value;
+            try {
+                showResult('simplePostResult', 'Sending simple POST...');
+                const testData = {
+                    firstName: 'Test',
+                    lastName: 'User',
+                    email: 'test@example.com'
+                };
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                showResult('simplePostResult', 'POST sent successfully (no-cors mode - response not readable)');
+            } catch (error) {
+                showResult('simplePostResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function testFullPost() {
+            const url = document.getElementById('scriptUrl').value;
+            try {
+                showResult('fullPostResult', 'Sending full form data...');
+                const formData = {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    streetAddress: '123 Test St',
+                    city: 'Test City',
+                    state: 'CA',
+                    postalCode: '12345',
+                    phoneNumber: '555-1234',
+                    email: 'john.doe@test.com',
+                    audioPositions: ['A1', 'A2'],
+                    audioYearsExperience: '5',
+                    workedWithPrestige: 'No'
+                };
+                
+                console.log('Sending data:', formData);
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                showResult('fullPostResult', 'Full form data sent successfully (check Google Sheet)');
+            } catch (error) {
+                showResult('fullPostResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function testAlternativeSubmit() {
+            const url = document.getElementById('scriptUrl').value;
+            try {
+                showResult('altResult', 'Testing alternative submission method...');
+                
+                // Method 1: Using URLSearchParams
+                const params = new URLSearchParams();
+                params.append('data', JSON.stringify({
+                    firstName: 'Alternative',
+                    lastName: 'Method',
+                    email: 'alt@test.com'
+                }));
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: params
+                });
+                
+                showResult('altResult', 'Alternative method sent (check console and sheet)');
+            } catch (error) {
+                showResult('altResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        // Log any console messages
+        console.log('Test page loaded. Script URL:', SCRIPT_URL);
+    </script>
+</body>
+</html>

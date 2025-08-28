@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__filesystem__read_text_file",
+      "Bash(cat:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/private/tmp/pls-crewportal-fresh/pls-fix-crewportal-form-to-gsheet"
+    ]
+  }
+}
