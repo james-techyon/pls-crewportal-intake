@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude update)",
+      "Bash(claude migrate-installer:*)",
+      "Bash(npm update:*)",
+      "Bash(mkdir:*)",
+      "WebFetch(domain:prestigelaborsolutions.com)",
+      "WebFetch(domain:docs.google.com)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(cp:*)"
+    ],
+    "deny": []
+  }
+}
