@@ -398,10 +398,10 @@
                         <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" class="document-link">
                             📄 Download W-9 Tax Form (IRS Official)
                         </a>
-                        <a href="https://prestigelaborsolutions.com/documents/PLS_Independent_Contractor_Agreement_rev_06.18.25.pdf" target="_blank" class="document-link">
+                        <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS.Independent.Contractor.Agreement.pdf" target="_blank" class="document-link">
                             📄 Download Independent Contractor Agreement
                         </a>
-                        <a href="https://prestigelaborsolutions.com/documents/PLS-blank-invoice-template.pdf" target="_blank" class="document-link">
+                        <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS-Contractor-Invoice-Template.pdf" target="_blank" class="document-link">
                             📄 Download Invoice Template (For Future Use)
                         </a>
                     </div>
@@ -410,26 +410,13 @@
                 <!-- Tax Information Section -->
                 <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_tax_header elementor-col-100">
                     <hr>
-                    <h2>Tax Information <span class="optional-notice">(Required for work eligibility)</span></h2>
-                    <p class="section-notice">⚠️ You can submit without this information, but you won't be eligible for work assignments until completed.</p>
+                    <h2>Tax Information <span style="color: #e74c3c; font-weight: bold;">(MANDATORY)</span></h2>
+                    <p class="section-notice" style="color: #e74c3c; font-weight: bold;">⚠️ W-9 upload is REQUIRED. You cannot submit the form without a signed W-9 per IRS requirements.</p>
                 </div>
-                <div class="elementor-field-type-radio elementor-field-group elementor-column elementor-field-group-field_tax_method elementor-col-100">
-                    <label class="elementor-field-label">Tax Information Method</label>
-                    <div class="elementor-field-subgroup elementor-subgroup-inline">
-                        <span class="elementor-field-option">
-                            <input type="radio" value="Upload W-9" id="form-field-field_tax_method-0" name="form_fields[field_tax_method]" onchange="toggleTaxFields(this.value)">
-                            <label for="form-field-field_tax_method-0">Upload W-9 Form</label>
-                        </span>
-                        <span class="elementor-field-option">
-                            <input type="radio" value="Enter Information" id="form-field-field_tax_method-1" name="form_fields[field_tax_method]" onchange="toggleTaxFields(this.value)">
-                            <label for="form-field-field_tax_method-1">Enter Tax Information</label>
-                        </span>
-                    </div>
-                </div>
-                <div class="elementor-field-type-upload elementor-field-group elementor-column elementor-field-group-field_w9_upload elementor-col-100" id="w9UploadField" style="display: none;">
-                    <label for="form-field-field_w9_upload" class="elementor-field-label">Upload Completed W-9 Form</label>
-                    <input type="file" name="form_fields[field_w9_upload]" id="form-field-field_w9_upload" class="elementor-field elementor-size-sm elementor-upload-field" accept=".pdf,.jpg,.jpeg,.png">
-                    <small class="form-text">Please upload your completed W-9 form (download available above)</small>
+                <div class="elementor-field-type-upload elementor-field-group elementor-column elementor-field-group-field_w9_upload elementor-col-100" id="w9UploadField">
+                    <label for="form-field-field_w9_upload" class="elementor-field-label">Upload Signed W-9 Form * <span style="color: #e74c3c;">(REQUIRED)</span></label>
+                    <input type="file" name="form_fields[field_w9_upload]" id="form-field-field_w9_upload" class="elementor-field elementor-size-sm elementor-upload-field" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <small class="form-text" style="color: #e74c3c; font-weight: bold;">⚠️ MANDATORY: The IRS requires a signed W-9 to verify tax information for reporting purposes. This protects both you and our business from errors or penalties.</small>
                 </div>
                 <div id="taxInfoFields" style="display: none;">
                     <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_legal_business_name elementor-col-100">

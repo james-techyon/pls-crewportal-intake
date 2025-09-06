@@ -8,10 +8,11 @@ const OPS_SHEET_NAME = 'Operations Ready';
 
 // Email notification configuration
 const EMAIL_CONFIG = {
-  to: 'kyle@prestigelaborsolutions.com, ray@prestigelaborsolutions.com',  // Primary recipients (comma-separated)
-  cc: 'rosie@prestigelaborsolutions.com',                                 // CC recipient(s) - can be comma-separated list
-  sendToApplicant: true,                                                  // Whether to also send confirmation to applicant
-  sendToAdmins: true                                                      // Whether to send notification to admin emails above
+  to: 'rosie@prestigelaborsolutions.com',
+//  to: 'kyle@prestigelaborsolutions.com, ray@prestigelaborsolutions.com',  // Primary recipients (comma-separated)
+//  cc: '',                                 // CC recipient(s) - can be comma-separated list
+  sendToApplicant: false,                   // Whether to also send confirmation to applicant
+  sendToAdmins: true                        // Whether to send notification to admin emails above
 };
 
 // Main function to handle POST requests
@@ -32,6 +33,14 @@ function doPost(e) {
     let opsSheet = spreadsheet.getSheetByName(OPS_SHEET_NAME);
     if (!opsSheet) {
       opsSheet = createOpsSheet(spreadsheet);
+    }
+    
+    // Validate W-9 is provided (REQUIRED per IRS)
+    if (!formData.w9FileData) {
+      return ContentService.createTextOutput(JSON.stringify({
+        status: 'error',
+        message: 'W-9 form is REQUIRED. IRS requires a signed W-9 for tax compliance and reporting purposes.'
+      })).setMimeType(ContentService.MimeType.JSON);
     }
     
     // Handle file uploads
@@ -114,18 +123,22 @@ function createRawSheet(spreadsheet) {
     'Lighting Years Experience',
     'Lighting Shows',
     'Lighting Main Strengths',
-    // Management Section
-    'Management Positions',
-    'Management Skillsets',
-    'Management Years Experience',
-    'Management Shows',
-    'Management Experience',
-    // Assist Positions Section
-    'Assist Positions',
-    'Equipment Comfort Level',
-    'Assist Years Experience',
-    'Assist Shows',
-    'Assist Main Strengths',
+    // General Section
+    'General Positions',
+    'General Skillsets',
+    'General Years Experience',
+    'General Shows',
+    'General Experience',
+    // Scenic Section
+    'Scenic Positions',
+    'Scenic Equipment Comfort Level',
+    'Scenic Years Experience',
+    'Scenic Shows',
+    'Scenic Main Strengths',
+    // Rigging Section
+    'Rigging Positions',
+    // Breakout Section
+    'Breakout Positions',
     // Additional Info
     'Companies Worked With',
     'Additional Skills',
@@ -184,6 +197,7 @@ function createOpsSheet(spreadsheet) {
     'LED',
     'Projection',
     'Scenic',
+    'Rigging',
     'Camera',
     'Information Technology',
     'Breakout',
@@ -253,18 +267,22 @@ function appendRawData(sheet, formData, profilePictureUrl, w9FileUrl) {
     formData.lightingYearsExperience || '',
     arrayToString(formData.lightingShowExperience),
     formData.lightingStrengths || '',
-    // Management Section
-    arrayToString(formData.managementPositions),
-    arrayToString(formData.managementSkillsets),
-    formData.managementYearsExperience || '',
-    arrayToString(formData.managementShowExperience),
-    formData.managementExperience || '',
-    // Assist Positions Section
-    arrayToString(formData.assistPositions),
-    formData.assistEquipmentComfort || '',
-    formData.assistYearsExperience || '',
-    arrayToString(formData.assistShowExperience),
-    formData.assistMainStrengths || '',
+    // General Section
+    arrayToString(formData.generalPositions),
+    arrayToString(formData.generalSkillsets),
+    formData.generalYearsExperience || '',
+    arrayToString(formData.generalShowExperience),
+    formData.generalExperience || '',
+    // Scenic Section
+    arrayToString(formData.scenicPositions),
+    formData.scenicEquipmentComfort || '',
+    formData.scenicYearsExperience || '',
+    arrayToString(formData.scenicShowExperience),
+    formData.scenicMainStrengths || '',
+    // Rigging Section
+    arrayToString(formData.riggingPositions),
+    // Breakout Section
+    arrayToString(formData.breakoutPositions),
     // Additional Info
     formData.companiesWorkedWith || '',
     formData.additionalSkills || '',
@@ -319,8 +337,8 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
     formData.audioYearsExperience,
     formData.videoYearsExperience,
     formData.lightingYearsExperience,
-    formData.managementYearsExperience,
-    formData.assistYearsExperience
+    formData.generalYearsExperience,
+    formData.scenicYearsExperience
   ]);
   
   // Map skills to categories
@@ -332,8 +350,8 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
     formData.audioStrengths ? 'Audio: ' + formData.audioStrengths : '',
     formData.videoStrengths ? 'Video: ' + formData.videoStrengths : '',
     formData.lightingStrengths ? 'Lighting: ' + formData.lightingStrengths : '',
-    formData.managementExperience ? 'Management: ' + formData.managementExperience : '',
-    formData.assistMainStrengths ? 'Assist: ' + formData.assistMainStrengths : ''
+    formData.generalExperience ? 'General: ' + formData.generalExperience : '',
+    formData.scenicMainStrengths ? 'Scenic: ' + formData.scenicMainStrengths : ''
   ].filter(Boolean).join(' | ');
   
   // Determine document status
@@ -362,6 +380,7 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
     skills.led || '',                            // LED
     skills.projection || '',                     // Projection
     skills.scenic || '',                         // Scenic
+    skills.rigging || '',                        // Rigging
     skills.camera || '',                         // Camera
     skills.it || '',                             // Information Technology
     skills.breakout || '',                       // Breakout
@@ -466,24 +485,43 @@ function mapSkillCategories(formData) {
     });
   }
   
-  // Map management to leadership
-  if (formData.managementPositions && formData.managementPositions.length > 0) {
-    categories.leadership = formData.managementPositions.map(pos => {
-      if (pos.includes('Producer')) return 'Project Manager';
-      if (pos.includes('Director')) return 'Technical Director';
-      if (pos.includes('Coordinator')) return 'Steward';
-      return 'Project Manager';
+  // Map general positions to leadership
+  if (formData.generalPositions && formData.generalPositions.length > 0) {
+    categories.leadership = formData.generalPositions.map(pos => {
+      if (pos.includes('Lead')) return 'Lead';
+      if (pos.includes('Technician Lead')) return 'Technical Lead';
+      if (pos.includes('Crew Lead')) return 'Crew Lead';
+      if (pos.includes('Stagehand Lead')) return 'Stagehand Lead';
+      return 'General';
     });
   }
   
-  // Map assist positions to breakout
-  if (formData.assistPositions && formData.assistPositions.length > 0) {
-    categories.breakout = formData.assistPositions.map(pos => {
-      if (pos.includes('Audio')) return 'Breakout A1';
-      if (pos.includes('Video')) return 'Breakout V1';
-      if (pos.includes('Lighting')) return 'Breakout L1';
+  // Handle Scenic positions
+  if (formData.scenicPositions && formData.scenicPositions.length > 0) {
+    categories.scenic = formData.scenicPositions.map(pos => {
+      if (pos.includes('Lead')) return 'Scenic Lead';
+      if (pos.includes('Master')) return 'Master Carpenter';
+      return 'Scenic';
+    });
+  }
+  
+  // Handle Rigging positions
+  if (formData.riggingPositions && formData.riggingPositions.length > 0) {
+    categories.rigging = formData.riggingPositions.map(pos => {
+      if (pos.includes('Lead')) return 'Rigging Lead';
+      if (pos.includes('Master')) return 'Master Rigger';
+      return 'Rigger';
+    });
+  }
+  
+  // Handle Breakout positions
+  if (formData.breakoutPositions && formData.breakoutPositions.length > 0) {
+    categories.breakout = formData.breakoutPositions.map(pos => {
+      if (pos.includes('Lead')) return 'Breakout Lead';
       if (pos.includes('Operator')) return 'Breakout Operator';
-      return 'Breakout Technician';
+      if (pos.includes('Technician')) return 'Breakout Technician';
+      if (pos.includes('Floater')) return 'Breakout Floater';
+      return 'Breakout';
     });
   }
   
@@ -576,8 +614,17 @@ function sendAdminNotification(formData, rawRow, opsRow) {
   if (formData.lightingPositions && formData.lightingPositions.length > 0) {
     skills.push('Lighting: ' + arrayToString(formData.lightingPositions));
   }
-  if (formData.managementPositions && formData.managementPositions.length > 0) {
-    skills.push('Management: ' + arrayToString(formData.managementPositions));
+  if (formData.generalPositions && formData.generalPositions.length > 0) {
+    skills.push('General: ' + arrayToString(formData.generalPositions));
+  }
+  if (formData.scenicPositions && formData.scenicPositions.length > 0) {
+    skills.push('Scenic: ' + arrayToString(formData.scenicPositions));
+  }
+  if (formData.riggingPositions && formData.riggingPositions.length > 0) {
+    skills.push('Rigging: ' + arrayToString(formData.riggingPositions));
+  }
+  if (formData.breakoutPositions && formData.breakoutPositions.length > 0) {
+    skills.push('Breakout: ' + arrayToString(formData.breakoutPositions));
   }
   
   // Determine experience level
@@ -585,8 +632,8 @@ function sendAdminNotification(formData, rawRow, opsRow) {
     formData.audioYearsExperience,
     formData.videoYearsExperience,
     formData.lightingYearsExperience,
-    formData.managementYearsExperience,
-    formData.assistYearsExperience
+    formData.generalYearsExperience,
+    formData.scenicYearsExperience
   ]);
   
   const subject = `New Freelancer Application: ${fullName} - ${formData.isEligible ? 'ELIGIBLE' : 'INELIGIBLE'}`;

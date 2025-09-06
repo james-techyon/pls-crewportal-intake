@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestige Labor Solutions - Crew Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crew Application Form</h1>
+            <p>Join the Prestige Labor Solutions team</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <form id="crewForm" class="crew-form">
+            <!-- Section 1: Personal Information -->
+            <div class="form-section active" data-section="1">
+                <h2>Personal Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="streetAddress">Street Address *</label>
+                    <input type="text" id="streetAddress" name="streetAddress" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="streetAddress2">Street Address Line 2</label>
+                    <input type="text" id="streetAddress2" name="streetAddress2">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State/Province *</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postalCode">Postal/Zip Code *</label>
+                        <input type="text" id="postalCode" name="postalCode" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number *</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Audio Positions -->
+            <div class="form-section" data-section="2">
+                <h2>Part 1: Audio Positions</h2>
+                
+                <div class="form-group">
+                    <label>Audio Positions</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="audioPositions" value="A1"> A1</label>
+                        <label><input type="checkbox" name="audioPositions" value="A2"> A2</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gear Operated</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="audioGearOperated" value="Yamaha"> Yamaha</label>
+                        <label><input type="checkbox" name="audioGearOperated" value="Avid"> Avid</label>
+                        <label><input type="checkbox" name="audioGearOperated" value="Digico"> Digico</label>
+                        <label><input type="checkbox" name="audioGearOperated" value="Allen & Heath"> Allen & Heath</label>
+                        <label><input type="checkbox" name="audioGearOperated" value="Midas"> Midas</label>
+                        <label><input type="checkbox" name="audioGearOperated" value="Soundcraft"> Soundcraft</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="audioYearsExperience">Years of Experience</label>
+                    <input type="text" id="audioYearsExperience" name="audioYearsExperience">
+                </div>
+
+                <div class="form-group">
+                    <label>Show Experience</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="audioShowExperience" value="Corporate"> Corporate</label>
+                        <label><input type="checkbox" name="audioShowExperience" value="Concert"> Concert</label>
+                        <label><input type="checkbox" name="audioShowExperience" value="Theatre"> Theatre</label>
+                        <label><input type="checkbox" name="audioShowExperience" value="Festival"> Festival</label>
+                        <label><input type="checkbox" name="audioShowExperience" value="Broadcast"> Broadcast</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="audioStrengths">Audio Strengths</label>
+                    <textarea id="audioStrengths" name="audioStrengths" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3: Video Positions -->
+            <div class="form-section" data-section="3">
+                <h2>Part 2: Video Positions</h2>
+                
+                <div class="form-group">
+                    <label>Video Positions</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="videoPositions" value="V1"> V1</label>
+                        <label><input type="checkbox" name="videoPositions" value="Camera Op"> Camera Op</label>
+                        <label><input type="checkbox" name="videoPositions" value="LED Tech"> LED Tech</label>
+                        <label><input type="checkbox" name="videoPositions" value="Projectionist"> Projectionist</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gear Operated</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="videoGearOperated" value="Barco"> Barco</label>
+                        <label><input type="checkbox" name="videoGearOperated" value="Christie"> Christie</label>
+                        <label><input type="checkbox" name="videoGearOperated" value="Panasonic"> Panasonic</label>
+                        <label><input type="checkbox" name="videoGearOperated" value="Ross"> Ross</label>
+                        <label><input type="checkbox" name="videoGearOperated" value="Blackmagic"> Blackmagic</label>
+                        <label><input type="checkbox" name="videoGearOperated" value="Roland"> Roland</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="videoYearsExperience">Years of Experience</label>
+                    <input type="text" id="videoYearsExperience" name="videoYearsExperience">
+                </div>
+
+                <div class="form-group">
+                    <label>Show Experience</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="videoShowExperience" value="Corporate"> Corporate</label>
+                        <label><input type="checkbox" name="videoShowExperience" value="Concert"> Concert</label>
+                        <label><input type="checkbox" name="videoShowExperience" value="Theatre"> Theatre</label>
+                        <label><input type="checkbox" name="videoShowExperience" value="Broadcast"> Broadcast</label>
+                        <label><input type="checkbox" name="videoShowExperience" value="Live Stream"> Live Stream</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="videoStrengths">Video Strengths</label>
+                    <textarea id="videoStrengths" name="videoStrengths" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 4: Lighting Positions -->
+            <div class="form-section" data-section="4">
+                <h2>Part 3: Lighting Positions</h2>
+                
+                <div class="form-group">
+                    <label>Lighting Positions</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="lightingPositions" value="L1"> L1</label>
+                        <label><input type="checkbox" name="lightingPositions" value="L2"> L2</label>
+                        <label><input type="checkbox" name="lightingPositions" value="Spot Op"> Spot Op</label>
+                        <label><input type="checkbox" name="lightingPositions" value="Rigger"> Rigger</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gear Operated</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="lightingGearOperated" value="GrandMA"> GrandMA</label>
+                        <label><input type="checkbox" name="lightingGearOperated" value="Hog"> Hog</label>
+                        <label><input type="checkbox" name="lightingGearOperated" value="ETC"> ETC</label>
+                        <label><input type="checkbox" name="lightingGearOperated" value="Chamsys"> Chamsys</label>
+                        <label><input type="checkbox" name="lightingGearOperated" value="Avolites"> Avolites</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lightingYearsExperience">Years of Experience</label>
+                    <input type="text" id="lightingYearsExperience" name="lightingYearsExperience">
+                </div>
+
+                <div class="form-group">
+                    <label>Show Experience</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="lightingShowExperience" value="Corporate"> Corporate</label>
+                        <label><input type="checkbox" name="lightingShowExperience" value="Concert"> Concert</label>
+                        <label><input type="checkbox" name="lightingShowExperience" value="Theatre"> Theatre</label>
+                        <label><input type="checkbox" name="lightingShowExperience" value="Festival"> Festival</label>
+                        <label><input type="checkbox" name="lightingShowExperience" value="Architectural"> Architectural</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lightingStrengths">Lighting Strengths</label>
+                    <textarea id="lightingStrengths" name="lightingStrengths" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5: Management Positions -->
+            <div class="form-section" data-section="5">
+                <h2>Part 4: Management Positions</h2>
+                
+                <div class="form-group">
+                    <label>Management Positions</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="managementPositions" value="Project Manager"> Project Manager</label>
+                        <label><input type="checkbox" name="managementPositions" value="Technical Director"> Technical Director</label>
+                        <label><input type="checkbox" name="managementPositions" value="Production Manager"> Production Manager</label>
+                        <label><input type="checkbox" name="managementPositions" value="Stage Manager"> Stage Manager</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Skillsets</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="managementSkillsets" value="CAD"> CAD</label>
+                        <label><input type="checkbox" name="managementSkillsets" value="Vectorworks"> Vectorworks</label>
+                        <label><input type="checkbox" name="managementSkillsets" value="Project Planning"> Project Planning</label>
+                        <label><input type="checkbox" name="managementSkillsets" value="Budget Management"> Budget Management</label>
+                        <label><input type="checkbox" name="managementSkillsets" value="Team Leadership"> Team Leadership</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="managementYearsExperience">Years of Experience</label>
+                    <input type="text" id="managementYearsExperience" name="managementYearsExperience">
+                </div>
+
+                <div class="form-group">
+                    <label>Show Experience</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="managementShowExperience" value="Corporate"> Corporate</label>
+                        <label><input type="checkbox" name="managementShowExperience" value="Concert"> Concert</label>
+                        <label><input type="checkbox" name="managementShowExperience" value="Theatre"> Theatre</label>
+                        <label><input type="checkbox" name="managementShowExperience" value="Festival"> Festival</label>
+                        <label><input type="checkbox" name="managementShowExperience" value="Trade Show"> Trade Show</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="managementExperience">Management Experience</label>
+                    <textarea id="managementExperience" name="managementExperience" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6: Assist Positions -->
+            <div class="form-section" data-section="6">
+                <h2>Part 5: Assist Positions</h2>
+                
+                <div class="form-group">
+                    <label>Assist Positions</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="assistPositions" value="General Tech"> General Tech</label>
+                        <label><input type="checkbox" name="assistPositions" value="Stagehand"> Stagehand</label>
+                        <label><input type="checkbox" name="assistPositions" value="Loader"> Loader</label>
+                        <label><input type="checkbox" name="assistPositions" value="Runner"> Runner</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="assistEquipmentComfort">Equipment Comfort Level</label>
+                    <input type="text" id="assistEquipmentComfort" name="assistEquipmentComfort">
+                </div>
+
+                <div class="form-group">
+                    <label for="assistYearsExperience">Years of Experience</label>
+                    <input type="text" id="assistYearsExperience" name="assistYearsExperience">
+                </div>
+
+                <div class="form-group">
+                    <label>Show Experience</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="assistShowExperience" value="Corporate"> Corporate</label>
+                        <label><input type="checkbox" name="assistShowExperience" value="Concert"> Concert</label>
+                        <label><input type="checkbox" name="assistShowExperience" value="Theatre"> Theatre</label>
+                        <label><input type="checkbox" name="assistShowExperience" value="Festival"> Festival</label>
+                        <label><input type="checkbox" name="assistShowExperience" value="Warehouse"> Warehouse</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="assistMainStrengths">Main Strengths</label>
+                    <textarea id="assistMainStrengths" name="assistMainStrengths" rows="4"></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7: Additional Information -->
+            <div class="form-section" data-section="7">
+                <h2>Part 6: Additional Information</h2>
+                
+                <div class="form-group">
+                    <label for="companiesWorkedWith">Companies You've Worked With</label>
+                    <textarea id="companiesWorkedWith" name="companiesWorkedWith" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalSkills">Additional Skills</label>
+                    <textarea id="additionalSkills" name="additionalSkills" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalComments">Additional Comments</label>
+                    <textarea id="additionalComments" name="additionalComments" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Have you worked with Prestige Labor in the past?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="workedWithPrestige" value="Yes" required> Yes</label>
+                        <label><input type="radio" name="workedWithPrestige" value="No" required> No</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="referredBy">Referred by:</label>
+                    <input type="text" id="referredBy" name="referredBy">
+                </div>
+
+                <div class="form-group">
+                    <label for="linkedinProfile">What is your LinkedIn Profile?</label>
+                    <input type="url" id="linkedinProfile" name="linkedinProfile" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+
+                <div class="form-group">
+                    <label for="profilePicture">Upload Picture</label>
+                    <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                    <small>Choose File (JPG, PNG, etc. Max 5MB)</small>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="form-navigation">
+                <button type="button" class="btn btn-secondary" id="prevBtn" onclick="changeSection(-1)">Previous</button>
+                <button type="button" class="btn btn-primary" id="nextBtn" onclick="changeSection(1)">Next</button>
+                <button type="submit" class="btn btn-submit" id="submitBtn" style="display: none;">Submit Application</button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <h2>Application Submitted Successfully!</h2>
+            <p>Thank you for your application. We'll review it and get back to you soon.</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <h2>Submission Error</h2>
+            <p id="errorText">There was an error submitting your application. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

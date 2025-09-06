@@ -133,6 +133,16 @@ function validateForm() {
         isValid = false;
     }
     
+    // Validate W-9 upload is REQUIRED (IRS compliance)
+    const w9Input = document.getElementById('form-field-field_w9_upload');
+    if (!w9Input || !w9Input.files || w9Input.files.length === 0) {
+        const w9Field = document.getElementById('w9UploadField');
+        if (w9Field) {
+            showFieldError(w9Field, 'W-9 form is REQUIRED. IRS requires a signed W-9 for tax reporting.');
+        }
+        isValid = false;
+    }
+    
     return isValid;
 }
 
@@ -219,16 +229,19 @@ const fieldIdToName = {
     'field_3a8dac3': 'lightingYearsExperience',
     'field_fe3d8b9': 'lightingShowExperience',
     'field_2565b9c': 'lightingStrengths',
-    'field_0184d7d': 'managementPositions',
-    'field_c8197c0': 'managementSkillsets',
-    'field_9a163ea': 'managementYearsExperience',
-    'field_86c97da': 'managementShowExperience',
-    'field_a3b6557': 'managementExperience',
-    'field_e2e8603': 'assistPositions',
-    'field_4cb15ea': 'assistEquipmentComfort',
-    'field_8ee1d31': 'assistYearsExperience',
-    'field_69b7f75': 'assistShowExperience',
-    'field_297d1d9': 'assistMainStrengths',
+    'field_0184d7d': 'generalPositions',
+    'field_c8197c0': 'generalSkillsets',
+    'field_9a163ea': 'generalYearsExperience',
+    'field_86c97da': 'generalShowExperience',
+    'field_a3b6557': 'generalExperience',
+    'field_e2e8603': 'scenicPositions',
+    'field_4cb15ea': 'scenicEquipmentComfort',
+    'field_8ee1d31': 'scenicYearsExperience',
+    'field_69b7f75': 'scenicShowExperience',
+    'field_297d1d9': 'scenicMainStrengths',
+    // New sections
+    'field_rigging_positions': 'riggingPositions',
+    'field_breakout_positions': 'breakoutPositions',
     'field_c1a020e': 'companiesWorkedWith',
     'field_025c58b': 'additionalSkills',
     'field_2e7849d': 'additionalComments',
@@ -422,13 +435,12 @@ function calculateEligibility(formData) {
         status: 'ELIGIBLE'
     };
     
-    // Check tax info
-    const hasW9 = formData.w9FileUrl || (formData.w9Upload && formData.w9Upload !== '');
-    const hasTaxInfo = formData.taxId && formData.businessType && formData.legalBusinessName;
+    // Check tax info - W-9 is MANDATORY per IRS requirements
+    const hasW9 = formData.w9FileUrl || (formData.w9FileData && formData.w9FileData !== '');
     
-    if (!hasW9 && !hasTaxInfo) {
+    if (!hasW9) {
         eligibility.isEligible = false;
-        eligibility.missingRequirements.push('Tax Information (W-9 or Tax ID)');
+        eligibility.missingRequirements.push('Signed W-9 Form (Required by IRS for tax reporting)');
     }
     
     // Check banking (required for payment but not eligibility)
