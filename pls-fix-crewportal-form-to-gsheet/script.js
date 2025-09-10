@@ -259,7 +259,9 @@ const fieldIdToName = {
     // Terms & Conditions
     'field_terms_accepted': 'termsAccepted',
     'field_electronic_signature': 'electronicSignature',
-    'field_signature_date': 'signatureDate'
+    'field_signature_date': 'signatureDate',
+    'field_agreement_signature': 'electronicSignature',  // Map new agreement signature to same field
+    'field_agreement_date': 'signatureDate'  // Map new agreement date to same field
 };
 
 // Show field error
