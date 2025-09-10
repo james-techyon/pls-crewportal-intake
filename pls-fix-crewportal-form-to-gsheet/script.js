@@ -7,11 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('freelancerForm');
     form.addEventListener('submit', handleSubmit);
     
-    // Set today's date for signature field
+    // Set today's date for signature fields
     const today = new Date().toLocaleDateString('en-US');
     const signatureDateField = document.getElementById('form-field-field_signature_date');
     if (signatureDateField) {
         signatureDateField.value = today;
+    }
+    
+    // Set date for agreement signature field
+    const agreementDateField = document.getElementById('form-field-field_agreement_date');
+    if (agreementDateField) {
+        agreementDateField.value = today;
     }
     
     // Check eligibility on form change

@@ -7,11 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('freelancerForm');
     form.addEventListener('submit', handleSubmit);
     
-    // Set today's date for signature field
+    // Set today's date for signature fields
     const today = new Date().toLocaleDateString('en-US');
     const signatureDateField = document.getElementById('form-field-field_signature_date');
     if (signatureDateField) {
         signatureDateField.value = today;
+    }
+    
+    // Set date for agreement signature field
+    const agreementDateField = document.getElementById('form-field-field_agreement_date');
+    if (agreementDateField) {
+        agreementDateField.value = today;
     }
     
     // Check eligibility on form change
@@ -130,16 +136,6 @@ function validateForm() {
     const routingNum = document.getElementById('form-field-field_routing_number');
     if (routingNum.value && routingNum.value.length !== 9) {
         showFieldError(routingNum, 'Routing number must be 9 digits');
-        isValid = false;
-    }
-    
-    // Validate W-9 upload is REQUIRED (IRS compliance)
-    const w9Input = document.getElementById('form-field-field_w9_upload');
-    if (!w9Input || !w9Input.files || w9Input.files.length === 0) {
-        const w9Field = document.getElementById('w9UploadField');
-        if (w9Field) {
-            showFieldError(w9Field, 'W-9 form is REQUIRED. IRS requires a signed W-9 for tax reporting.');
-        }
         isValid = false;
     }
     
@@ -435,12 +431,13 @@ function calculateEligibility(formData) {
         status: 'ELIGIBLE'
     };
     
-    // Check tax info - W-9 is MANDATORY per IRS requirements
-    const hasW9 = formData.w9FileUrl || (formData.w9FileData && formData.w9FileData !== '');
+    // Check tax info
+    const hasW9 = formData.w9FileUrl || (formData.w9Upload && formData.w9Upload !== '');
+    const hasTaxInfo = formData.taxId && formData.businessType && formData.legalBusinessName;
     
-    if (!hasW9) {
+    if (!hasW9 && !hasTaxInfo) {
         eligibility.isEligible = false;
-        eligibility.missingRequirements.push('Signed W-9 Form (Required by IRS for tax reporting)');
+        eligibility.missingRequirements.push('Tax Information (W-9 or Tax ID)');
     }
     
     // Check banking (required for payment but not eligibility)

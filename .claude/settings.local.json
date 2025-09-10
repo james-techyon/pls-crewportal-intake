@@ -18,7 +18,9 @@
       "Bash(gh api:*)",
       "Bash(gh auth:*)",
       "Bash(gh extension:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(tree:*)",
+      "Bash(wc:*)"
     ],
     "deny": []
   }

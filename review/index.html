@@ -393,30 +393,57 @@
                 <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_documents_header elementor-col-100">
                     <hr>
                     <h2>Required Documents</h2>
-                    <p>Please download and review these documents. You'll need them to complete your application:</p>
-                    <div class="document-links">
-                        <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" class="document-link">
-                            📄 Download W-9 Tax Form (IRS Official)
-                        </a>
-                        <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS.Independent.Contractor.Agreement.pdf" target="_blank" class="document-link">
-                            📄 Download Independent Contractor Agreement
-                        </a>
-                        <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS-Contractor-Invoice-Template.pdf" target="_blank" class="document-link">
-                            📄 Download Invoice Template (For Future Use)
-                        </a>
-                    </div>
-                </div>
+                    <p class="mandatory-notice">⚠️ All three documents below are mandatory. Work cannot be assigned or compensated until all are completed.</p>
+                    
+                    <!-- Tax Information Subsection -->
+                    <div class="document-subsection tax-information">
+                        <h3>Tax Information</h3>
+                        <div class="subsection-content">
+                            <a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" class="document-link">
+                                📄 Download W-9 Tax Form (IRS Official)
+                            </a>
 
-                <!-- Tax Information Section -->
-                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_tax_header elementor-col-100">
-                    <hr>
-                    <h2>Tax Information <span style="color: #e74c3c; font-weight: bold;">(MANDATORY)</span></h2>
-                    <p class="section-notice" style="color: #e74c3c; font-weight: bold;">⚠️ W-9 upload is REQUIRED. You cannot submit the form without a signed W-9 per IRS requirements.</p>
-                </div>
-                <div class="elementor-field-type-upload elementor-field-group elementor-column elementor-field-group-field_w9_upload elementor-col-100" id="w9UploadField">
-                    <label for="form-field-field_w9_upload" class="elementor-field-label">Upload Signed W-9 Form * <span style="color: #e74c3c;">(REQUIRED)</span></label>
-                    <input type="file" name="form_fields[field_w9_upload]" id="form-field-field_w9_upload" class="elementor-field elementor-size-sm elementor-upload-field" accept=".pdf,.jpg,.jpeg,.png" required>
-                    <small class="form-text" style="color: #e74c3c; font-weight: bold;">⚠️ MANDATORY: The IRS requires a signed W-9 to verify tax information for reporting purposes. This protects both you and our business from errors or penalties.</small>
+                            <div class="upload-section">
+                                <label for="form-field-field_w9_upload" class="elementor-field-label">Upload Signed W-9 Form *</label>
+                                <input type="file" name="form_fields[field_w9_upload]" id="form-field-field_w9_upload" class="elementor-field elementor-size-sm elementor-upload-field" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <small class="form-text">The IRS requires a signed W-9 to verify tax information for reporting purposes. This protects both you and our business from errors or penalties.</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Independent Contractor Agreement Subsection -->
+                    <div class="document-subsection contractor-agreement">
+                        <h3>Independent Contractor Agreement</h3>
+                        <div class="subsection-content">
+                            <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS.Independent.Contractor.Agreement.pdf" target="_blank" class="document-link">
+                                📄 View/Download Agreement
+                            </a>
+                            <div class="agreement-signature">
+                                <p class="signature-notice">By entering your name and today's date below, you acknowledge that you have read, understood, and agree to the Independent Contractor Agreement terms.</p>
+                                <div class="signature-fields">
+                                    <div class="signature-field">
+                                        <label for="form-field-field_agreement_signature" class="elementor-field-label">Electronic Signature (Type your full name) *</label>
+                                        <input size="1" type="text" name="form_fields[field_agreement_signature]" id="form-field-field_agreement_signature" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Type your full legal name" required>
+                                    </div>
+                                    <div class="signature-field">
+                                        <label for="form-field-field_agreement_date" class="elementor-field-label">Date</label>
+                                        <input size="1" type="text" name="form_fields[field_agreement_date]" id="form-field-field_agreement_date" class="elementor-field elementor-size-sm elementor-field-textual" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Invoice Template Subsection -->
+                    <div class="document-subsection invoice-template">
+                        <h3>Invoice Template</h3>
+                        <div class="subsection-content">
+                            <a href="https://github.com/james-techyon/pls-crewportal-intake/releases/download/v1.0.0/PLS-Contractor-Invoice-Template.pdf" target="_blank" class="document-link">
+                                📄 Download Invoice Template
+                            </a>
+                            <p class="subsection-description">Use this template for billing your completed work assignments.</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="taxInfoFields" style="display: none;">
                     <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_legal_business_name elementor-col-100">
@@ -476,58 +503,6 @@
                 </div>
 
                 <!-- Terms & Conditions Section -->
-                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_terms_header elementor-col-100">
-                    <hr>
-                    <h2>Independent Contractor Agreement <span class="optional-notice">(Required for work eligibility)</span></h2>
-                    <p class="section-notice">⚠️ You must accept the terms to be eligible for work assignments. Please review the full agreement (download available above).</p>
-                </div>
-                <div class="elementor-field-type-html elementor-field-group elementor-column elementor-field-group-field_terms_content elementor-col-100">
-                    <div class="terms-container">
-                        <h3>INDEPENDENT CONTRACTOR AGREEMENT</h3>
-                        <p>This Independent Contractor Agreement ("Agreement") is entered into between Prestige Labor Solutions ("Company") and the undersigned contractor ("Contractor").</p>
-                        
-                        <h4>1. INDEPENDENT CONTRACTOR STATUS</h4>
-                        <p>Contractor acknowledges and agrees that Contractor is an independent contractor and not an employee of Company. Contractor shall have no authority to bind Company or to hold out to any third party that Contractor is an employee or agent of Company.</p>
-                        
-                        <h4>2. SERVICES</h4>
-                        <p>Contractor agrees to provide audio, video, lighting, management, or technical support services as requested by Company on a project-by-project basis.</p>
-                        
-                        <h4>3. COMPENSATION</h4>
-                        <p>Contractor will be compensated at agreed-upon rates for each project. Payment will be made via direct deposit within 30 days of invoice submission and approval.</p>
-                        
-                        <h4>4. TAXES</h4>
-                        <p>Contractor is responsible for all federal, state, and local taxes. Company will not withhold any taxes from Contractor's compensation. Contractor agrees to provide a completed W-9 form.</p>
-                        
-                        <h4>5. INSURANCE</h4>
-                        <p>Contractor is responsible for maintaining appropriate insurance coverage, including general liability and professional liability insurance.</p>
-                        
-                        <h4>6. CONFIDENTIALITY</h4>
-                        <p>Contractor agrees to maintain the confidentiality of all proprietary information received from Company or its clients.</p>
-                        
-                        <h4>7. TERMINATION</h4>
-                        <p>Either party may terminate this Agreement at any time with written notice.</p>
-                        
-                        <h4>8. GOVERNING LAW</h4>
-                        <p>This Agreement shall be governed by the laws of the state where services are performed.</p>
-                    </div>
-                </div>
-                <div class="elementor-field-type-checkbox elementor-field-group elementor-column elementor-field-group-field_terms_accepted elementor-col-100">
-                    <label for="form-field-field_terms_accepted" class="elementor-field-label"></label>
-                    <div class="elementor-field-subgroup elementor-subgroup-inline">
-                        <span class="elementor-field-option">
-                            <input type="checkbox" value="Yes" id="form-field-field_terms_accepted-0" name="form_fields[field_terms_accepted][]">
-                            <label for="form-field-field_terms_accepted-0">I have read, understood, and agree to the terms and conditions of the Independent Contractor Agreement</label>
-                        </span>
-                    </div>
-                </div>
-                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_electronic_signature elementor-col-50">
-                    <label for="form-field-field_electronic_signature" class="elementor-field-label">Electronic Signature (Type your full name)</label>
-                    <input size="1" type="text" name="form_fields[field_electronic_signature]" id="form-field-field_electronic_signature" class="elementor-field elementor-size-sm elementor-field-textual" placeholder="Type your full legal name">
-                </div>
-                <div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-field_signature_date elementor-col-50">
-                    <label for="form-field-field_signature_date" class="elementor-field-label">Date</label>
-                    <input size="1" type="text" name="form_fields[field_signature_date]" id="form-field-field_signature_date" class="elementor-field elementor-size-sm elementor-field-textual" readonly>
-                </div>
 
                 <!-- Eligibility Warning -->
                 <div id="eligibilityWarning" class="elementor-field-type-html elementor-field-group elementor-column elementor-col-100" style="display: none;">

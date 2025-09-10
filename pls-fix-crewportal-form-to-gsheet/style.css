@@ -362,3 +362,134 @@ textarea.elementor-field {
     margin-top: 5px;
     display: block;
 }
+
+/* Documentation Section */
+.document-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.document-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: rgba(243, 156, 18, 0.1);
+    border: 1px solid #f39c12;
+    border-radius: 4px;
+    color: #f39c12;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.document-link:hover {
+    background-color: rgba(243, 156, 18, 0.2);
+    transform: translateX(5px);
+}
+
+/* Required Documents Subsections */
+.mandatory-notice {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid #e74c3c;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.document-subsection {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.document-subsection:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(243, 156, 18, 0.3);
+}
+
+.document-subsection h3 {
+    color: #f39c12;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    border-bottom: 2px solid rgba(243, 156, 18, 0.2);
+    padding-bottom: 10px;
+}
+
+.subsection-content {
+    margin-top: 15px;
+}
+
+.upload-section {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.upload-section .form-text {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.agreement-signature {
+    margin-top: 15px;
+}
+
+.signature-notice {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid #3498db;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.signature-fields {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.signature-field {
+    flex: 1;
+    min-width: 250px;
+}
+
+.subsection-description {
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Specific subsection colors */
+.tax-information {
+    border-color: rgba(231, 76, 60, 0.3);
+}
+
+.tax-information:hover {
+    border-color: rgba(231, 76, 60, 0.5);
+}
+
+.contractor-agreement {
+    border-color: rgba(52, 152, 219, 0.3);
+}
+
+.contractor-agreement:hover {
+    border-color: rgba(52, 152, 219, 0.5);
+}
+
+.invoice-template {
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+.invoice-template:hover {
+    border-color: rgba(46, 204, 113, 0.5);
+}
