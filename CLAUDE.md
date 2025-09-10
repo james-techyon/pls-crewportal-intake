@@ -4,129 +4,89 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a dual-deployment web form system for Prestige Labor Solutions' contractor applications. The form replaces a WordPress/Elementor solution and integrates directly with Google Sheets through Google Apps Script.
+Web-based contractor application form for Prestige Labor Solutions that replaces a WordPress/Elementor solution. Features dual-deployment (production/staging) and integrates with Google Sheets via Google Apps Script for data storage and email notifications.
 
 ## Architecture
 
-### Dual Deployment Structure
-- **Production**: `/pls-fix-crewportal-form-to-gsheet/` - Live production form
-- **Review/Staging**: `/review/` - Testing environment for changes
-- Both environments share identical codebase but allow safe testing before production deployment
+### Deployment Structure
+- **Production**: `/pls-fix-crewportal-form-to-gsheet/` - Live at `https://james-techyon.github.io/pls-crewportal-intake/pls-fix-crewportal-form-to-gsheet/`
+- **Staging**: `/review/` - Testing at `https://james-techyon.github.io/pls-crewportal-intake/review/`
+- Both directories contain identical codebases - test in `/review/` before copying to production
 
-### Backend Integration
-- **Google Apps Script**: Serverless backend handling form submissions
-- **Google Sheets**: Data storage with dual-sheet structure:
-  - `Raw Submissions` - Unprocessed form data
-  - `Operations Ready` - Transformed data for business operations
-- **Email Integration**: Automatic notifications to applicants and administrators
+### Tech Stack
+- **Frontend**: Vanilla HTML/CSS/JavaScript (no framework dependencies)
+- **Backend**: Google Apps Script (serverless)
+- **Storage**: Google Sheets with dual-sheet structure (Raw Submissions + Operations Ready)
+- **Hosting**: GitHub Pages (deploys from `main` branch)
 
-### Form Components
-- **Multi-step form** with progress indicators
-- **File uploads** (profile pictures, W-9 forms) stored in Google Drive
-- **Client-side validation** with eligibility checking
-- **Mobile-responsive** vanilla HTML/CSS/JavaScript
+## Development Commands
 
-## Key Configuration
-
-### Google Apps Script URLs
-- Production: `https://script.google.com/macros/s/AKfycbxtpezLrqs8aIVN0hj62zduP3OPO5NX7kLIBUmkrfE4n_l8Jo68rua9mHEUdByqNEi3/exec`
-- Google Sheet ID: `1Z1NTy7di7Xx4M5j1Ji4dKdjMymwcwOOnYbMxUWa4SMI`
-
-### Email Configuration (in Code.gs)
-```javascript
-const EMAIL_CONFIG = {
-  to: 'kyle@prestigelaborsolutions.com, ray@prestigelaborsolutions.com',
-  cc: 'rosie@prestigelaborsolutions.com',
-  sendToApplicant: true,
-  sendToAdmins: true
-};
-```
-
-## Development Workflow
-
-### Testing Changes
-1. Make changes in `/review/` directory first
-2. Test using `test-connection.html` file to verify Google Sheets integration
-3. Deploy review version to GitHub Pages: `https://james-techyon.github.io/pls-crewportal-intake/review/`
-4. Once validated, copy changes to `/pls-fix-crewportal-form-to-gsheet/`
-
-### Local Testing
 ```bash
-# Serve locally for testing
+# Local development server
 python -m http.server 8000
 # or
 npx http-server
 
-# Access at http://localhost:8000
+# No build process required - static files only
+# Deploy by pushing to main branch (GitHub Pages auto-deploys)
 ```
 
-### Deployment
-- **GitHub Pages**: Automatically deploys from `main` branch
-- **Production URL**: `https://james-techyon.github.io/pls-crewportal-intake/pls-fix-crewportal-form-to-gsheet/`
-- **Review URL**: `https://james-techyon.github.io/pls-crewportal-intake/review/`
+## Critical Configuration
 
-## Critical Files
+### Google Apps Script (in script.js)
+```javascript
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtpezLrqs8aIVN0hj62zduP3OPO5NX7kLIBUmkrfE4n_l8Jo68rua9mHEUdByqNEi3/exec';
+```
 
-### Form Frontend
-- `index.html` - Main form structure with all contractor application fields
-- `script.js` - Form handling, validation, eligibility checking, and submission logic
-- `style.css` - Responsive styling and form progression UI
+### Google Sheets (in Code.gs)
+```javascript
+const SHEET_ID = '1Z1NTy7di7Xx4M5j1Ji4dKdjMymwcwOOnYbMxUWa4SMI';
+const EMAIL_CONFIG = {
+  to: 'rosie@prestigelaborsolutions.com',  // Update for production
+  sendToApplicant: false,
+  sendToAdmins: true
+};
+```
+
+## Core Files
+
+### Frontend
+- `index.html` - Multi-section form with ~200 fields for contractor applications
+- `script.js` - Form validation, eligibility checking, file upload handling, submission to Google Apps Script
+- `style.css` - Responsive styling with progress indicators
 
 ### Backend (Google Apps Script)
-- `Code.gs` - Main Apps Script file handling form submissions and Google Sheets operations
-- `Code_CORRECTED.gs` - Backup/alternative version
+- `Code.gs` - Handles POST requests, writes to Google Sheets, sends emails, manages file uploads to Google Drive
+- Processes W-9 forms (mandatory) and profile pictures (optional)
+- Creates two sheet entries per submission: raw data and operations-ready format
 
-### Configuration & Testing
-- `config.md` - Contains deployment URLs and configuration notes
-- `test-connection.html` - Standalone testing tool for Google Sheets connectivity
+## Development Workflow
 
-## Data Flow
+1. Always test changes in `/review/` directory first
+2. Use empty `test-connection.html` file to verify Google Sheets connectivity
+3. Check browser console for errors during form submission
+4. Once validated, copy changes to `/pls-fix-crewportal-form-to-gsheet/`
 
-1. **Form Submission**: Client-side JavaScript collects and validates form data
-2. **File Processing**: Profile pictures and W-9 forms converted to base64 and uploaded to Google Drive
-3. **Backend Processing**: Google Apps Script receives JSON data via POST request
-4. **Dual Storage**: Data written to both "Raw Submissions" and "Operations Ready" sheets
-5. **Email Notifications**: Confirmations sent to applicant and admin team
+## Form Data Flow
 
-## Security Considerations
-
-- **CORS Handling**: Uses `no-cors` mode for Google Apps Script compatibility
-- **File Upload Limits**: 5MB maximum file size
-- **Data Privacy**: All data stored within client's Google environment
-- **Access Control**: Google Apps Script deployed with "Anyone" access for form submissions
-
-## Form Fields Structure
-
-The form captures comprehensive contractor information including:
-- Personal/contact information
-- Audio/video/lighting technical experience
-- Management and assistant roles experience
-- Equipment proficiency ratings
-- Previous work history and references
-- File uploads (profile picture, W-9)
+1. User fills multi-section form with eligibility checks
+2. JavaScript validates required fields and calculates eligibility status
+3. Files converted to base64 for transmission
+4. POST request sent to Google Apps Script (using `no-cors` mode)
+5. Apps Script stores files in Google Drive, writes to both sheets
+6. Email notifications sent based on configuration
+7. Success/error message displayed to user
 
 ## Troubleshooting
 
-### Form Not Submitting
-1. Check browser console for JavaScript errors
-2. Verify Google Apps Script URL in `script.js`
-3. Test connection using `test-connection.html`
-4. Ensure Google Apps Script has proper deployment permissions
+### Common Issues
+- **Form not submitting**: Check Google Apps Script URL in script.js
+- **CORS errors**: Ensure using `mode: 'no-cors'` in fetch request
+- **Missing data**: Verify field mappings between HTML form and Code.gs
+- **W-9 required**: Form enforces W-9 upload for IRS compliance
 
-### Google Sheets Issues
-1. Verify Sheet ID in `Code.gs` matches target spreadsheet
-2. Check Google Apps Script execution logs
-3. Ensure proper Google Drive/Sheets permissions
-4. Test with minimal data using test functions
-
-## Emergency Procedures
-
-### Rollback Production
-If production issues occur, immediately update the production directory with known-good files from `/review/` or previous commits.
-
-### Backend Issues
-If Google Apps Script fails:
-1. Check execution logs in Apps Script console
-2. Redeploy the web app if needed
-3. Update Sheet ID or email configurations if changed
-4. Test with `test-connection.html` before going live
+### Google Apps Script Debugging
+- Check execution logs at script.google.com
+- Ensure web app is deployed with "Anyone" access
+- Verify Sheet ID matches target spreadsheet
+- Test with minimal data first

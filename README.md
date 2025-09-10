@@ -10,11 +10,11 @@ This repository contains the Crew Portal intake form for Prestige Labor Solution
 ## Deployment URLs
 
 ### Production
-- **URL**: https://[username].github.io/pls-crewportal-intake/pls-fix-crewportal-form-to-gsheet/
+- **URL**: https://james-techyon.github.io/pls-crewportal-intake/pls-fix-crewportal-form-to-gsheet/
 - **Purpose**: Live production form
 
 ### Review/Staging  
-- **URL**: https://[username].github.io/pls-crewportal-intake/review/
+- **URL**: https://james-techyon.github.io/pls-crewportal-intake/review/
 - **Purpose**: Testing and review before production deployment
 
 ## Setup Instructions
