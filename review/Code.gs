@@ -2,7 +2,7 @@
 // This script handles form submissions and writes data to Google Sheets
 
 // Configuration
-const SHEET_ID = '1Z1NTy7di7Xx4M5j1Ji4dKdjMymwcwOOnYbMxUWa4SMI';
+const SHEET_ID = '1ewAK9DN4ZkW9uo4AZ5aXytIi9iihg4oP7ogkV5ht9hQ';
 const RAW_SHEET_NAME = 'Raw Submissions';
 const OPS_SHEET_NAME = 'Operations Ready';
 
@@ -43,13 +43,21 @@ function doPost(e) {
       })).setMimeType(ContentService.MimeType.JSON);
     }
     
-    // Handle file uploads
+    // Create applicant-specific folder name with timestamp
+    const timestamp = new Date();
+    const dateStr = Utilities.formatDate(timestamp, Session.getScriptTimeZone(), 'yyyyMMddHHmmss');
+    const firstName = (formData.firstName || 'Unknown').replace(/[^a-zA-Z0-9]/g, '');
+    const lastName = (formData.lastName || 'Applicant').replace(/[^a-zA-Z0-9]/g, '');
+    const applicantFolderName = `${lastName}_${firstName}_${dateStr}`;
+    
+    // Handle file uploads with applicant-specific folder
     let profilePictureUrl = '';
     if (formData.profilePictureData) {
       profilePictureUrl = uploadFile(
         formData.profilePictureData,
         formData.profilePictureName || 'profile.jpg',
-        formData.profilePictureMimeType || 'image/jpeg'
+        formData.profilePictureMimeType || 'image/jpeg',
+        applicantFolderName
       );
     }
     
@@ -58,7 +66,8 @@ function doPost(e) {
       w9FileUrl = uploadFile(
         formData.w9FileData,
         formData.w9FileName || 'w9-form.pdf',
-        formData.w9FileMimeType || 'application/pdf'
+        formData.w9FileMimeType || 'application/pdf',
+        applicantFolderName
       );
     }
     
@@ -784,13 +793,30 @@ Processed data: Row ${opsRow} of "Operations Ready" sheet
   }
 }
 
-// Handle file uploads
-function uploadFile(base64Data, fileName, mimeType) {
+// Handle file uploads with applicant-specific subfolder
+function uploadFile(base64Data, fileName, mimeType, applicantFolderName) {
   try {
     const blob = Utilities.newBlob(Utilities.base64Decode(base64Data), mimeType, fileName);
-    const folder = getOrCreateFolder('Crew Portal Uploads');
-    const file = folder.createFile(blob);
+    
+    // Get or create main uploads folder
+    const mainFolder = getOrCreateFolder('Crew Portal Uploads');
+    
+    // Create applicant-specific subfolder within main folder
+    const applicantFolder = getOrCreateSubfolder(mainFolder, applicantFolderName);
+    
+    // Create file in applicant's folder
+    const file = applicantFolder.createFile(blob);
     file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    
+    // Add descriptive file name based on type
+    let descriptiveName = fileName;
+    if (fileName.includes('w9') || fileName.includes('W9') || fileName.includes('W-9')) {
+      descriptiveName = `W9_${fileName}`;
+    } else if (fileName.includes('profile') || mimeType.includes('image')) {
+      descriptiveName = `ProfilePic_${fileName}`;
+    }
+    file.setName(descriptiveName);
+    
     return file.getUrl();
   } catch (error) {
     console.error('Error uploading file:', error);
@@ -798,13 +824,23 @@ function uploadFile(base64Data, fileName, mimeType) {
   }
 }
 
-// Get or create folder for uploads
+// Get or create main folder for uploads
 function getOrCreateFolder(folderName) {
   const folders = DriveApp.getFoldersByName(folderName);
   if (folders.hasNext()) {
     return folders.next();
   } else {
     return DriveApp.createFolder(folderName);
+  }
+}
+
+// Get or create subfolder within a parent folder
+function getOrCreateSubfolder(parentFolder, subfolderName) {
+  const subfolders = parentFolder.getFoldersByName(subfolderName);
+  if (subfolders.hasNext()) {
+    return subfolders.next();
+  } else {
+    return parentFolder.createFolder(subfolderName);
   }
 }
 
