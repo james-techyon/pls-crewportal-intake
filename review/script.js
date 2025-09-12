@@ -39,6 +39,11 @@ async function handleSubmit(e) {
     // Collect form data
     const formData = collectFormData();
     
+    // If signature is provided, automatically set termsAccepted for Google Sheets compatibility
+    if (formData.electronicSignature) {
+        formData.termsAccepted = ['Yes'];
+    }
+    
     // Calculate eligibility
     const eligibility = calculateEligibility(formData);
     formData.eligibilityStatus = eligibility.status;
@@ -433,8 +438,8 @@ function calculateEligibility(formData) {
         status: 'ELIGIBLE'
     };
     
-    // Check tax info
-    const hasW9 = formData.w9FileUrl || (formData.w9Upload && formData.w9Upload !== '');
+    // Check tax info - look for W-9 file data that was uploaded
+    const hasW9 = formData.w9FileData && formData.w9FileData !== '';
     const hasTaxInfo = formData.taxId && formData.businessType && formData.legalBusinessName;
     
     if (!hasW9 && !hasTaxInfo) {
@@ -447,16 +452,10 @@ function calculateEligibility(formData) {
         eligibility.missingRequirements.push('Banking Details (Required for Payment)');
     }
     
-    // Check terms acceptance
-    if (!formData.termsAccepted || formData.termsAccepted.length === 0) {
-        eligibility.isEligible = false;
-        eligibility.missingRequirements.push('Terms & Conditions Agreement');
-    }
-    
-    // Check e-signature
+    // Check e-signature (signature implies terms acceptance)
     if (!formData.electronicSignature) {
         eligibility.isEligible = false;
-        eligibility.missingRequirements.push('Electronic Signature');
+        eligibility.missingRequirements.push('Independent Contractor Agreement Signature');
     }
     
     // Set status
