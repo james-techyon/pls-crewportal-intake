@@ -44,12 +44,6 @@ async function handleSubmit(e) {
         formData.termsAccepted = ['Yes'];
     }
     
-    // Calculate eligibility
-    const eligibility = calculateEligibility(formData);
-    formData.eligibilityStatus = eligibility.status;
-    formData.isEligible = eligibility.isEligible;
-    formData.missingRequirements = eligibility.missingRequirements.join(', ');
-    
     // Show loading state
     showLoading(true);
     
@@ -73,6 +67,12 @@ async function handleSubmit(e) {
             formData.w9FileName = file.name;
             formData.w9FileMimeType = file.type;
         }
+        
+        // Calculate eligibility AFTER file uploads are processed
+        const eligibility = calculateEligibility(formData);
+        formData.eligibilityStatus = eligibility.status;
+        formData.isEligible = eligibility.isEligible;
+        formData.missingRequirements = eligibility.missingRequirements.join(', ');
         
         // Log form data for debugging
         console.log('Submitting form data:', formData);
