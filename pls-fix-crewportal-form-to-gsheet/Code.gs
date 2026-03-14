@@ -162,11 +162,6 @@ function createRawSheet(spreadsheet) {
     'Legal Business Name',
     'Business Type',
     'Tax ID',
-    // Banking Details
-    'Bank Name',
-    'Account Type',
-    'Routing Number',
-    'Account Number',
     // Terms & Conditions
     'Terms Accepted',
     'Electronic Signature',
@@ -195,7 +190,6 @@ function createOpsSheet(spreadsheet) {
     'Company Name if any',
     'Phone',
     'Email',
-    'Direct Deposit ACH Request Form',
     'W - 9 form',
     'PLS Independent Contractor Agreement Rev',
     'Notes',
@@ -232,7 +226,6 @@ function createOpsSheet(spreadsheet) {
     'GOOGLE review',
     // New eligibility tracking columns
     'Work Eligibility Status',
-    'Payment Setup Status',
     'Missing Requirements'
   ];
   
@@ -306,11 +299,6 @@ function appendRawData(sheet, formData, profilePictureUrl, w9FileUrl) {
     formData.legalBusinessName || '',
     formData.businessType || '',
     formData.taxId || '',
-    // Banking Details
-    formData.bankName || '',
-    formData.accountType || '',
-    formData.routingNumber || '',
-    formData.accountNumber || '',
     // Terms & Conditions
     arrayToString(formData.termsAccepted),
     formData.electronicSignature || '',
@@ -364,12 +352,8 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
   ].filter(Boolean).join(' | ');
   
   // Determine document status
-  const hasDirectDeposit = formData.bankName && formData.accountNumber && formData.routingNumber ? 'Yes' : 'No';
   const hasW9 = w9FileUrl || (formData.taxId && formData.businessType) ? 'Yes' : 'No';
   const hasAgreement = formData.termsAccepted && formData.electronicSignature ? 'Yes' : 'No';
-  
-  // Determine payment setup status
-  const paymentSetupStatus = hasDirectDeposit === 'Yes' ? 'COMPLETE' : 'INCOMPLETE';
   
   // Transformed row data
   const rowData = [
@@ -378,7 +362,6 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
     formData.companiesWorkedWith || '',          // Company Name if any
     formData.phoneNumber || '',                  // Phone
     formData.email || '',                        // Email
-    hasDirectDeposit,                            // Direct Deposit ACH Request Form
     hasW9,                                        // W - 9 form
     hasAgreement,                                // PLS Independent Contractor Agreement Rev
     notes,                                        // Notes
@@ -414,7 +397,6 @@ function appendTransformedData(sheet, formData, profilePictureUrl, w9FileUrl) {
     '',                                           // Docusign
     '',                                           // GOOGLE review
     formData.eligibilityStatus || '',           // Work Eligibility Status
-    paymentSetupStatus,                          // Payment Setup Status
     formData.missingRequirements || ''          // Missing Requirements
   ];
   

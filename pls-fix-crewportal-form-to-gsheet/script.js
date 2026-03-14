@@ -129,21 +129,6 @@ function validateForm() {
         isValid = false;
     }
     
-    // Validate account numbers match
-    const accountNum = document.getElementById('form-field-field_account_number');
-    const accountConfirm = document.getElementById('form-field-field_account_number_confirm');
-    if (accountNum.value && accountConfirm.value && accountNum.value !== accountConfirm.value) {
-        showFieldError(accountConfirm, 'Account numbers do not match');
-        isValid = false;
-    }
-    
-    // Validate routing number
-    const routingNum = document.getElementById('form-field-field_routing_number');
-    if (routingNum.value && routingNum.value.length !== 9) {
-        showFieldError(routingNum, 'Routing number must be 9 digits');
-        isValid = false;
-    }
-    
     return isValid;
 }
 
@@ -255,12 +240,6 @@ const fieldIdToName = {
     'field_legal_business_name': 'legalBusinessName',
     'field_business_type': 'businessType',
     'field_tax_id': 'taxId',
-    // Banking Details
-    'field_bank_name': 'bankName',
-    'field_account_type': 'accountType',
-    'field_routing_number': 'routingNumber',
-    'field_account_number': 'accountNumber',
-    'field_account_number_confirm': 'accountNumberConfirm',
     // Terms & Conditions
     'field_terms_accepted': 'termsAccepted',
     'field_electronic_signature': 'electronicSignature',
@@ -445,11 +424,6 @@ function calculateEligibility(formData) {
     if (!hasW9 && !hasTaxInfo) {
         eligibility.isEligible = false;
         eligibility.missingRequirements.push('Tax Information (W-9 or Tax ID)');
-    }
-    
-    // Check banking (required for payment but not eligibility)
-    if (!formData.routingNumber || !formData.accountNumber) {
-        eligibility.missingRequirements.push('Banking Details (Required for Payment)');
     }
     
     // Check e-signature (signature implies terms acceptance)
